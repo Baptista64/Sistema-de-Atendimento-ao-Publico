@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="senha" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b662ae1f-98e3-408e-829f-e6edc273b45e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="98"/>
+	<parameter name="foto" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     atendimento.`nome` AS atendimento_nome,
+     atendimento.`estado` AS atendimento_estado,
+     atendimento.`prioridade` AS atendimento_prioridade,
+     atendimento.`data` AS atendimento_data
+FROM
+     `atendimento` atendimento
+WHERE
+id = $P{id}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prioridade" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="atendimento_nome" class="java.lang.String"/>
+	<field name="atendimento_estado" class="java.lang.Integer"/>
+	<field name="atendimento_prioridade" class="java.lang.Integer"/>
+	<field name="atendimento_data" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="17" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="54" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement x="201" y="13" width="238" height="80" uuid="9418c404-b2a3-4ffd-9334-e6d1f6ce0830"/>
+			</rectangle>
+			<image>
+				<reportElement x="73" y="13" width="128" height="80" uuid="6cd800c1-7a6d-478a-b625-e1aa50b5fdeb"/>
+				<imageExpression><![CDATA[$P{foto}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="296" y="33" width="143" height="20" uuid="fae458bf-bb4b-4826-81e6-3762a90a232e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{estado} == 0 ? "Em espera" : "Atendido")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="53" width="143" height="20" uuid="64dacb68-3ec8-4317-9418-cca708ca8b43"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{prioridade} == 0 ? "Sim" : "Não")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="73" width="143" height="20" uuid="e9a8da5b-821d-4553-8f59-297a809ca2f3"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="13" width="143" height="20" uuid="3f24f66a-5722-4283-aa36-f47575e20709"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="13" width="79" height="20" uuid="bb779149-2ab5-4248-bd60-68860f789387"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Senha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="33" width="79" height="20" uuid="a9488dba-a015-4660-a4b6-4cbe391dfe45"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="53" width="79" height="20" uuid="450fa22f-d22e-4418-8558-be482d015ed3"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prioridade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="73" width="79" height="20" uuid="59a5f9f2-2bff-493f-9740-3e1877ae3aee"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
